@@ -6,3 +6,23 @@ html, body {
 canvas {
   display: block;
 }
+
+/* 假設 P5.js 的 Canvas 容器 ID 為 'p5-container' 
+   如果您沒有設定 ID，p5.js 預設會將 Canvas 直接放在 body 或您指定的父元素內。
+   此處假設您將 Canvas 放置在一個容器中，並給予特定 ID (或者直接針對 Canvas 元素)。 
+*/
+#p5-canvas-container { 
+    position: absolute; /* 絕對定位，使其脫離文檔流 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; /* 確保 Canvas 總是在最頂層 */
+    pointer-events: none; /* 讓滑鼠點擊穿透 Canvas，點到下方的 H5P 內容 (重要) */
+    display: none; /* 預設隱藏，直到收到成績才顯示 (在 JS 中控制) */
+}
+
+/* 確保 H5P 內容容器設置了 position: relative; */
+/* .h5p-content {
+    position: relative;
+} */
